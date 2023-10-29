@@ -17,3 +17,37 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+document.addEventListener("DOMContentLoaded", function () {
+    const sliderContainer = document.querySelector(".slider-container");
+    const slides = document.querySelectorAll(".slide");
+    const prevButton = document.querySelector(".prev-button");
+    const nextButton = document.querySelector(".next-button");
+    let slideIndex = 0;
+  
+    // Show the initial slide
+    showSlide(slideIndex);
+  
+    // Event listeners buat previous sama next button
+    prevButton.addEventListener("click", () => {
+      slideIndex -= 1;
+      showSlide(slideIndex);
+    });
+  
+    nextButton.addEventListener("click", () => {
+      slideIndex += 1;
+      showSlide(slideIndex);
+    });
+  
+    function showSlide(index) {
+      if (index < 0) {
+        slideIndex = slides.length - 1;
+      } else if (index >= slides.length) {
+        slideIndex = 0;
+      }
+  
+      const translateValue = -slideIndex * 100;
+      sliderContainer.style.transform = `translateX(${translateValue}%)`;
+    }
+  });
+  
+
